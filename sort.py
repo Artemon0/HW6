@@ -1,15 +1,15 @@
+import glob
 import os
 import shutil
 
 
-
 def sort_files(path: str) -> None:
-    files_dict = {'archives': [], 'audio': [], 'documents': [], 
+    files_dict = {'archives': [], 'audio': [], 'documents': [],
                   'images': [], 'unknown': [], 'video': []}
 
     for filename in os.listdir(path):
         fullpath = os.path.join(path, filename)
-
+        path = glob.glob(path)
         if os.path.isdir(fullpath):
             sort_files(fullpath)
             continue
@@ -50,6 +50,6 @@ def sort_files(path: str) -> None:
             print(f'{folder}:')
             for file in files:
                 print(file)
-if __name__ == "__main__":
-    path = "/user/Desktop/Хлам"
-    sort_files(path)
+# if __name__ == "__main__":
+#     path = "/user/Desktop/Хлам"
+#     sort_files(path)
